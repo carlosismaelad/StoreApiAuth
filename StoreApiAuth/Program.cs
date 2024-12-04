@@ -1,4 +1,5 @@
 using StoreApiAuth.Services;
+using StoreApiAuth.src.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,11 @@ builder.Services.AddSingleton<PostgresStatusService>(sp =>
 {
     var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
     return new PostgresStatusService(connectionString);
+});
+builder.Services.AddSingleton<SqlServerStatusService>(sp =>
+{
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+    return new SqlServerStatusService(connectionString);
 });
 
 builder.Services.AddEndpointsApiExplorer();

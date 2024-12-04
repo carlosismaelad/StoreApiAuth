@@ -1,18 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StoreApiAuth.Services;
+using StoreApiAuth.src.Services;
 
-namespace StoreApiAuth.Controllers
+namespace StoreApiAuth.src.Controllers
 {
     [ApiController]
-    [Route("api/v1/status/postgres")]
-    public class PostgresStatusController: ControllerBase
+    [Route("api/v1/status/sqlserver")]
+    public class SqlServerStatusController: ControllerBase
     {
-        private readonly PostgresStatusService _postgresStatusService;
+        private readonly SqlServerStatusService _sqlServiceStatusService;
         private readonly IConfiguration _configuration;
 
-        public PostgresStatusController(PostgresStatusService postgresStatusService)
+        public SqlServerStatusController(SqlServerStatusService sqlServiceStatusService)
         {
-            _postgresStatusService = postgresStatusService;
+            _sqlServiceStatusService = sqlServiceStatusService;
         }
 
         [HttpGet]
@@ -22,7 +23,7 @@ namespace StoreApiAuth.Controllers
         {
             try
             {
-                var databaseStatus = await _postgresStatusService.GetDatabaseStatusAsync();
+                var databaseStatus = await _sqlServiceStatusService.GetDatabaseStatusAsync();
 
                 var response = new
                 {
@@ -34,7 +35,7 @@ namespace StoreApiAuth.Controllers
 
                 return Ok(response);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, new
                 {
@@ -44,4 +45,5 @@ namespace StoreApiAuth.Controllers
             }
         }
     }
+}
 }
