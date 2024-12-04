@@ -5,12 +5,12 @@ namespace StoreApiAuth.Controllers
 {
     [ApiController]
     [Route("api/v1/status")]
-    public class DatabaseApiStatusController: ControllerBase
+    public class PostgresStatusController: ControllerBase
     {
-        private readonly DatabaseStatusService _databaseStatusService;
+        private readonly PostgresStatusService _databaseStatusService;
         private readonly IConfiguration _configuration;
 
-        public DatabaseApiStatusController(DatabaseStatusService databaseStatusService)
+        public PostgresStatusController(PostgresStatusService databaseStatusService)
         {
             _databaseStatusService = databaseStatusService;
         }

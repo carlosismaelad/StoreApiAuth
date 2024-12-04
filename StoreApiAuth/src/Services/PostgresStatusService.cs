@@ -2,11 +2,11 @@
 
 namespace StoreApiAuth.Services
 {
-    public class DatabaseStatusService
+    public class PostgresStatusService
     {
         private readonly string _connectionString;
 
-        public DatabaseStatusService(string connectionString)
+        public PostgresStatusService(string connectionString)
         {
             _connectionString = connectionString;
         }

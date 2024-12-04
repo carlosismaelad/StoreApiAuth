@@ -5,10 +5,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Configuração de serviços
 builder.Services.AddControllers();
 
-builder.Services.AddSingleton<DatabaseStatusService>(sp =>
+builder.Services.AddSingleton<PostgresStatusService>(sp =>
 {
     var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-    return new DatabaseStatusService(connectionString);
+    return new PostgresStatusService(connectionString);
 });
 
 builder.Services.AddEndpointsApiExplorer();
@@ -29,8 +29,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-
 
 // Executando o aplicativo
 app.Run();
