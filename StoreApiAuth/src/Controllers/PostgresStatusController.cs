@@ -4,7 +4,7 @@ using StoreApiAuth.Services;
 namespace StoreApiAuth.Controllers
 {
     [ApiController]
-    [Route("api/v1/status")]
+    [Route("api/v1/status/postgres")]
     public class PostgresStatusController: ControllerBase
     {
         private readonly PostgresStatusService _databaseStatusService;
